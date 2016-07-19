@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .hello {
+            color: green;
+        }
+
+        .world {
+            background: #ffff00;
+        }
+    </style>
+    <script src="vue.js"></script>
+</head>
+<body>
+<div id="app">
+    <input type="checkbox" id="checkbox" v-model="checked">
+    <label for="checkbox">{{ checked }}</label>
+</div>
+<div id="app1">
+    <input type="checkbox" id="jack" value="Jack" v-model="checkedNames">
+    <label for="jack">Jack</label>
+    <input type="checkbox" id="john" value="John" v-model="checkedNames">
+    <label for="john">John</label>
+    <input type="checkbox" id="mike" value="Mike" v-model="checkedNames">
+    <label for="mike">Mike</label>
+    <br>
+    <span>Checked names: {{ checkedNames | json }}</span>
+</div>
+<div id="app2">
+    <input type="radio" id="one" value="One" v-model="picked">
+    <label for="one">One</label>
+    <br>
+    <input type="radio" id="two" value="Two" v-model="picked">
+    <label for="two">Two</label>
+    <br>
+    <span>Picked: {{ picked }}</span>
+</div>
+<div id="app3">
+    <select v-model="selected">
+        <option>A</option>
+        <option>B</option>
+        <option>C</option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+</div>
+<div id="app4">
+    <select v-model="selected">
+        <option v-for="option in options" v-bind:value="option.value">
+            {{ option.text }}
+        </option>
+    </select>
+    <span>Selected: {{ selected }}</span>
+</div>
+<script>
+    /*单个勾选框*/
+    new Vue({
+        el: '#app',
+        data: {
+            checked: true
+        }
+    })
+
+    //复选框
+    new Vue({
+        el: '#app1',
+        data: {
+            checkedNames: []
+        }
+    })
+
+    //Radio
+    new Vue({
+        el: '#app2',
+        data: {
+            picked: 'One'
+        }
+    })
+
+    //select
+    new Vue({
+        el: '#app3',
+        data: {
+            selected: 'B'
+        }
+    })
+
+    //动态选项 用v-for渲染
+    new Vue({
+        el: '#app4',
+        data: {
+            selected: 'A',
+            options: [
+                { text: 'One', value: 'A' },
+                { text: 'Two', value: 'B' },
+                { text: 'Three', value: 'C' }
+            ]
+        }
+    })
+</script>
+</body>
+</html>

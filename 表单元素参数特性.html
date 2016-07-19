@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    </style>
+    <script src="vue.js"></script>
+    <!--延迟500秒之后更新-->
+    <div id="app">
+        <input v-model="msg" debounce="500">{{msg}}
+    </div>
+    <!--输出的内容是数字类型-->
+    <div id="app1">
+        <input v-model="msg" number>{{msg}}
+    </div>
+</head>
+<body>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            msg:'xxx'
+        }
+    })
+
+    new Vue({
+        el:'#app1',
+        data:{
+            msg:'xxx'
+        }
+    })
+
+    new Vue({
+        el:'#app2',
+        data:{
+            msg:'xxx'
+        }
+    })
+</script>
+</body>
+</html>

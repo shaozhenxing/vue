@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .hello {
+            color: green;
+        }
+        .world {
+            background: #ffff00;
+        }
+    </style>
+    <script src="vue.js"></script>
+</head>
+<body>
+<!-- 'abc' => 'cba' -->
+<div id="app">
+<span v-text="message | reverse"></span>
+</div>
+
+<div id="app1">
+    <span v-text="message | wrap 'before' 'after'"></span>
+</div>
+<script>
+    // 自定义过滤器
+    Vue.filter('reverse', function (value) {
+        return value.split('').reverse().join('')
+    });
+
+    //自定义过滤器一定要写在实例化前面要不然不对的
+    new Vue({
+        el: '#app',
+        data: {
+            message: 'abc'
+        }
+    });
+
+   /*过滤器函数可以接收任意数量的参数：*/
+
+    //过滤器接收参数
+    Vue.filter('wrap', function (value, begin, end) {
+        return begin + value + end;
+    })
+
+    new Vue({
+        el:'#app1',
+        data:{
+            message:'shaozhenxing'
+        }
+    })
+
+    
+</script>
+</body>
+</html>

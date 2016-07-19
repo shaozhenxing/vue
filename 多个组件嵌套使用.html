@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    </style>
+    <script src="vue.js"></script>
+    <!--延迟500秒之后更新-->
+    <div id="app">
+        <Parent></Parent>
+    </div>
+</head>
+<body>
+<script>
+    var Child = Vue.extend({
+        template:'<div>我是儿子</div>'
+    });
+
+    var Parent = Vue.extend({
+        template: '<div>我是父亲<my-component></my-component></div>',
+        components: {
+            // <my-component> 只能用在父组件模板内
+            'my-component': Child
+        }
+    })
+
+    Vue.component('Parent',Parent);
+
+    new Vue({
+        el:'#app'
+    })
+</script>
+</body>
+</html>

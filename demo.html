@@ -4,32 +4,58 @@
     <meta charset="UTF-8">
     <title></title>
     <style>
-        .hello {
-            color: green;
-        }
-
-        .world {
-            background: #ffff00;
-        }
     </style>
     <script src="vue.js"></script>
+    <div id="app">
+        <div id="parent">
+            <button @click="parent()">父亲</button>
+            <child></child>
+        </div>
+        <div id="child" @click="child()">
+            <button @click="child()">儿子</button>
+        </div>
+    </div>
 </head>
 <body>
-<!-- 'abc' => 'cba' -->
-<span v-text="message | reverse"></span>
 <script>
-    new Vue({
-        el: '#app',
-        data: {
-            message: 'abc'
+    var parent = Vue.extend({
+        template: '#parent',
+        methods: {
+            parent: function () {
+                this.$broadcast('broad', '爸爸被点击了');
+            }
+        },
+        events: {
+            emit: function (data) {
+                alert(data);
+            }
         }
     });
 
-    //    自动以filter
-    Vue.filter('reverse', function (value) {
-        return value.split('').reverse().join('');
-    })
+    var child = Vue.extend({
+        template: '#child',
+        events: {
+            broad: function (data) {
+                alert(data);
+            },
+            self: function (data) {
+                alert(data);
+            }
+        },
+        methods: {
+            child: function () {
+                this.$dispatch('emit', '儿子被点击了');
+                this.$emit('self', '自己被点击了');
+            }
+        }
+    });
 
+    Vue.component('parent', parent);
+    //    Vue.component('child',child);
+
+    new Vue({
+        el: '#app'
+    })
 </script>
 </body>
 </html>

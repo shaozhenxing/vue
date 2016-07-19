@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    </style>
+    <script src="vue.js"></script>
+    <!--延迟500秒之后更新-->
+    <div id="app">
+        <my-component></my-component>
+    </div>
+</head>
+<body>
+<script>
+    // 定义 组件
+    var MyComponent = Vue.extend({
+        template: '<div>A custom component!</div>'
+    })
+
+//     注册 组件
+    Vue.component('my-component', MyComponent)
+
+    // 创建根实例
+    new Vue({
+        el: '#example'
+    })
+</script>
+</body>
+</html>

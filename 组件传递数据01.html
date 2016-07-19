@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    </style>
+    <script src="vue.js"></script>
+    <!--延迟500秒之后更新-->
+    <div id="app">
+        <child msg="hello!"></child>
+    </div>
+</head>
+<body>
+<script>
+    Vue.component('child',{
+        props:['msg'],
+        //prop 可以用在模板内
+        template:'<span>{{msg}}</span>'
+    })
+
+    new Vue({
+        el:'#app'
+    });
+</script>
+</body>
+</html>
