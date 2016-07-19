@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        [v-cloak]{
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <div v-text="name"></div>
+    <div v-cloak>{{name}}</div>
+    <!--里面的内容都不会闪烁-->
+</div>
+<script src="vue.js"></script>
+<script>
+    var vm=new Vue({
+        data:{
+            name:'hello'
+        }
+    });
+    vm.$mount('#app');
+</script>
+</body>
+</html>

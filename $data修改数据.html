@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    {{mess.name}}
+    <!--实例化之后挂载的属性是不会生效的-->
+    {{mess.age}}
+</div>
+<script src="vue.js"></script>
+<script>
+//    var message={name:1};
+//    var vm=new Vue({
+//        el:'#app',
+//        data:{
+//            mess:message
+//        }
+//    });
+//
+//
+//    //alert(vm.mess);
+//    //指向的是同一地址，当前实例上的数据和绑定的对象指向的是同一内存空间
+//    console.log(vm.mess===message);
+//    message.age=7;//实例创建后原本不存在的属性，添加上不会生效
+//    //有两个方法：Vue.set  vm.$set
+//    //vue要求不要莫名其妙的加一些不存在的属性
+    var message = {name:1};
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            mess:message
+        }
+    });
+//   第一种修改mess数据的方法
+    message.name = '一';
+
+//   第二种修改mess数据的方法
+    vm.$data.mess = {name:'二'};
+</script>
+</body>
+</html>

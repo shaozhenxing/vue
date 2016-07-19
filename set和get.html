@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    {{name}}
+    {{b}}
+</div>
+<script src="vue.js"></script>
+<script>
+    var vm = new Vue({
+        data: {
+            name: 'hello'
+        },
+        computed: {
+            b: {
+                set: function (val) {
+                    /*this.name='zhufeng';*/
+                    this.name = val;
+                },
+                get: function () {
+                    return this.name + 'world';
+                }
+            }
+        }
+    });
+    vm.$mount('#app');
+    vm.b = 100;
+</script>
+</body>
+</html>

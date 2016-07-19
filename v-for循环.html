@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <div v-for="book in books">
+        <!--父亲{{$index}}
+        {{book.name}}
+        {{book.price}}
+        <div v-for="b in book.name">
+            {{$index}}
+        </div>-->
+        <div v-for="(index,b) in books">
+            {{book.name}}{{index}}
+            <div v-for="b in book.name">
+                {{$index}}
+            </div>
+        </div>
+    </div>
+</div>
+<script src="vue.js"></script>
+<script>
+    var vm=new Vue({
+        el:'#app',
+        data:{
+            /*  books:[
+             {name:'javascript',price:50},
+             {name:'node',price:60},
+             {name:'ajax',price:30},
+             {name:'vue',price:50}
+             ]*/
+            books:[
+                {name:['a','e','f'],price:50},
+                {name:['a'],price:60},
+                {name:['a','b','e'],price:30},
+                {name:['a','e','a','e'],price:50}
+            ]
+        }
+    });
+</script>
+</body>
+</html>

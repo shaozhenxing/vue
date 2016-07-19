@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--解析html源代码-->
+<div id="app">
+    {{{name}}}
+</div>
+<script src="vue.js"></script>
+<script>
+    var vm = new Vue({
+        el:'#app',
+        data:{
+            name:'<h1>你好</h1>'
+        }
+    });
+</script>
+</body>
+</html>

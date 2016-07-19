@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <img v-bind:src="imageSrc">
+    <a v-bind:href="aSrc">你好</a>
+    <!--简写-->
+    <a :href="aSrc">你好</a>
+</div>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el:'#app',
+        data:{
+            imageSrc:'https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1496707179,600800970&fm=111&gp=0.jpg',
+            aSrc:'http://www.baidu.com'
+        }
+    })
+</script>
+</body>
+</html>

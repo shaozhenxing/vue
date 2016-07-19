@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<!--绑定事件-->
+<div id="app">
+    <button v-on:click='dosome'>变</button>
+    <!--简写-->
+    <button @click='dosome'>变</button>
+    {{name}}
+</div>
+
+<!--绑定事件中如何传递参数呢?-->
+<div id="app1">
+    <!--当传递参数时,手动调用$event参数-->
+    <button @click='dosome("1",$event)'>123</button>
+</div>
+<script src="vue.js"></script>
+<script>
+    // 绑定 事件
+    new Vue({
+        el: '#app',
+        data: {
+            name: '你好'
+        },
+        methods: {
+            dosome: function (e) {
+                console.log(e); //e是事件源
+                this.$data.name = '好你';
+            }
+        }
+    })
+
+    //    绑定事件中如何传递参数呢?
+    new Vue({
+        el: '#app1',
+        data: {
+            name: '你好'
+        },
+        methods: {
+            dosome: function (a, e) {
+                console.log(a, e); //e是事件源 }
+            }
+        }
+    })
+</script>
+</body>
+</html>

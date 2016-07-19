@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .hello{
+            color:green;
+        }
+        .world{
+            background:#ffff00;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <!--通过{{}}方式绑定class-->
+    <div class="{{hello}}">直接取data上对象的属性</div>
+
+    <!--通过v-bind的方式(绑定单一class)-->
+    <div v-bind:class="hello">绑定属性</div>
+
+    <!--绑定多个class名字-->
+    <div v-bind:class="{hello:true,world:false}">123</div>
+
+    <!--直接绑定对象-->
+    <div v-bind:class="message">123</div>
+
+    <!--直接绑定数组-->
+    <div v-bind:class="[hello,world]">123</div>
+
+    <!--三元运算符-->
+    <div v-bind:class="[hello,isTrue?'hello1':'hellow2']">123</div>
+
+    <!--直接绑定到绑定行内样式￼-->
+    <div v-bind:style="{color:'red',background:'yellow'}">行内</div>
+
+    <!--绑定对象-->
+    <div v-bind:style="className">行内</div>
+
+</div>
+<script src="vue.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data: {
+            hello:'hello',
+            world:'world',
+            message:{
+                hello: true,
+                world: false
+            },
+            className:{
+                color:'red'
+            }
+        }
+    })
+</script>
+</body>
+</html>

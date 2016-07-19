@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <!--如果为true的话就显示下面这个,第二个不显示-->
+    <div v-show="true">{{name}}</div>
+    <!--如果为false的话就显示第二个,上面那个不显示-->
+    <div v-else>{{world}}</div>
+</div>
+<script src="vue.js"></script>
+<script>
+    var vm=new Vue({
+        data:{
+            name:'damai',
+            world:'shaozhenxing'
+        }
+    });
+    vm.$mount('#app');
+</script>
+</body>
+</html>
