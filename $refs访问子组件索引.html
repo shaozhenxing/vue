@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    </style>
+    <script src="vue.js"></script>
+    <div id="parent">
+        <user-profile v-ref:p></user-profile>
+    </div>
+</head>
+<body>
+<script>
+
+    Vue.component('user-profile',{
+        // 有效，因为是在正确的作用域内
+        template: '<div v-show="someChildProperty">Child</div>',
+        data: function(){
+            return {
+                someChildProperty: true
+            }
+        }
+    });
+
+    var parent = new Vue({el:'#parent'});
+
+    //子组件访问
+    console.log(parent.$refs.p.$data.someChildProperty);
+
+</script>
+</body>
+</html>

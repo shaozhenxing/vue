@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    </style>
+    <script src="vue.js"></script>
+    <div id="app">
+        {{bug}}
+    </div>
+</head>
+<body>
+<script>
+    var data = {};
+    var vm = new Vue({
+        el:'#app',
+        data:data
+    });
+
+    setTimeout(function () {
+        vm.$set('bug',100); //局部设置数据响应
+    },2000);
+
+    Vue.set(data,'bug',500); //全局设置
+</script>
+</body>
+</html>

@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    </style>
+    <script src="vue.js"></script>
+    <div id="app">
+        <template id="parent">
+            <button @click="parent()">父亲</button>
+            <child></child>
+        </template>
+        <template id="child">
+            <button @click="child()">儿子</button>
+            <grandson></grandson>
+        </template>
+        <template id="grandson">
+            <button @click="grandson()"></button>
+        </template>
+        <parent></parent>
+    </div>
+</head>
+<body>
+<script>
+    var parent = Vue.extend({
+        template: '#parent',
+        methods: {
+            parent: function () {
+                this.$broadcast('child', '爸爸被点击了');
+                this.$broadcast('grandson', '爷爷被点击了');
+            }
+        },
+        events: {
+            emit: function (data) {
+                alert(data);
+            }
+        }
+    });
+
+    var child = Vue.extend({
+        template: '#child',
+        events: {
+            broad: function (data) {
+                alert('儿子说：'+data);
+            },
+            self: function (data) {
+                alert('儿子说：'+data);
+            }
+        },
+        methods: {
+            child: function () {
+                this.$dispatch('emit', '儿子被点击了');
+                this.$emit('self', '自己被点击了');
+            }
+        }
+    });
+
+    var grandson = Vue.extend({
+        template: '#grandson',
+        events: {
+            broad: function (data) {
+                alert('爷爷说：'+data);
+            }
+        },
+        methods: {
+            child: function () {
+                this.$dispatch('grandson', '儿子被点击了');
+            }
+        }
+    });
+
+    Vue.component('parent',parent);
+    Vue.component('child',child);
+    Vue.component('grandson',grandson);
+
+    new Vue({
+        el: '#app'
+    })
+
+</script>
+</body>
+</html>

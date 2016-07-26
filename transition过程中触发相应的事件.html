@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .fade-transition{
+            transition: all .3s ease;
+            height: 30px;
+            padding: 10px;
+            background-color: #eee;
+            overflow: hidden;
+        }
+
+        .fade-enter,.fade-leave{
+            height: 0;
+            padding: 0 10px;
+            opacity: 0;
+        }
+    </style>
+    <script src="vue.js"></script>
+    <div id="app">
+        <div v-if="show" :transition="transitionName">hello</div>
+        <button @click="next">按钮</button>
+    </div>
+</head>
+<body>
+<script>
+
+    Vue.transition('fade',{
+        beforeEnter: function (el) {
+            alert('transition之前');
+        },
+        enter: function (el) {
+            alert('transition进入');
+        },
+        afterEnter: function (el) {
+            alert('transition之后');
+        },
+        enterCancelled: function (el) {
+            // handle cancellation
+        },
+
+        beforeLeave: function (el) {
+            alert('transition离开之前');
+        },
+        leave: function (el) {
+            alert('transition离开');
+        },
+        afterLeave: function (el) {
+            alert('transition离开之后');
+        },
+        leaveCancelled: function (el) {
+            // handle cancellation
+        }
+    });
+
+    new Vue({
+        el:'#app',
+        data:{
+            show:false,
+            transitionName:'fade'
+        },
+        methods:{
+            next:function(){
+                this.$data.show = !this.$data.show;
+            }
+        }
+    })
+
+</script>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    </style>
+    <script src="vue.js"></script>
+    <div id="app">
+        <table>
+            <!--is 特性-->
+            <tr is="my-component"></tr>
+        </table>
+    </div>
+</head>
+<body>
+<script>
+    Vue.component('my-component',{
+        template:'<tr><td>1</td></tr>'
+    });
+
+    new Vue({
+        el:'#app'
+    })
+</script>
+</body>
+</html>

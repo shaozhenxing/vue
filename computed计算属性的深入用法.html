@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    </style>
+    <script src="vue.js"></script>
+    <div id="parent">
+        {{timer}}
+    </div>
+</head>
+<body>
+<script>
+    var data = {};
+
+    var parent = new Vue({
+        el: '#parent',
+        data:{
+            bug:'',
+            timer:''
+        },
+        computed:{
+            mess:{
+                cache: false, //默认为true
+                get: function () {
+                    return new Date();
+                }
+            }
+        }
+    });
+
+    setInterval(function () {
+        parent.$set('timer',parent.mess);
+    });
+</script>
+</body>
+</html>

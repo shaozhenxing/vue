@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+    </style>
+    <script src="vue.js"></script>
+    <div id="app">
+        {{bug}}
+    </div>
+</head>
+<body>
+<script>
+    var data = {};
+    var vm = new Vue({
+        el:'#app',
+        data:data
+    });
+
+    vm.$set('bug',100);
+
+    console.log(vm.$el.innerHTML);//无法立即获得数据
+
+    Vue.nextTick(function () {
+        console.log(vm.$el.innerHTML);  //这个可以获取到数据
+    })
+
+</script>
+</body>
+</html>
